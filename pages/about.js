@@ -1,15 +1,16 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
 
-export default function Home() {
+export default function About() {
   return (
     <Layout>
       <Head>
-        <title>Well done</title>
+        <link rel="shortcut icon" href="/public/favicon.ico" />
+        <title>About Yeah</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>
-        <h1>Layout</h1>
+        <h1>About</h1>
       </div>
     </Layout>
   );

@@ -1,15 +1,15 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
 
-export default function Home() {
+export default function Contact() {
   return (
     <Layout>
       <Head>
-        <title>Well done</title>
+        <title>Contact</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>
-        <h1>Layout</h1>
+        <h1>Contact</h1>
       </div>
     </Layout>
   );
