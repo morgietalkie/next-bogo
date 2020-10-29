@@ -1,5 +1,5 @@
 {
-  "name": "basic-app",
+  "name": "bogo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,5 +17,9 @@
     "query-string": "5",
     "react": "17.0.1",
     "react-dom": "17.0.1"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/morgietalkie/next-bogo.git",
+  "author": "<morgangr01@gmail.com>",
+  "license": "MIT"
 }
