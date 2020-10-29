@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
+import MailIcon from "../static/mail-icon.svg";
 
 import { Parallax } from "react-parallax";
 
@@ -14,7 +15,7 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main className="contentIndex">
-        <section>
+        <section className="splashImage">
           <Parallax bgImage="/static/primaryBackground.jpg" bgImageAlt="the cat" strength={-100}>
             <div style={{ height: "100vh" }} />
           </Parallax>
@@ -69,7 +70,7 @@ export default function Home() {
           <div className="productBox">
             <h3>Speakers</h3>
             <Image
-              src="https://images.ctfassets.net/8cd2csgvqd3m/1MW5Ya0oS4ub8jlu8YkuJQ/da12a5d4d6444a8f65786a7dda4474d0/A9-smoked.png"
+              src="https://images.ctfassets.net/8cd2csgvqd3m/1MW5Ya0oS4ub8jlu8YkuJQ/da12a5d4d6444a8f65786a7dda4474d0/A9-smoked.png?q=90&fm=webp&w=480&h=480&fit=fill"
               alt="Speaker link image"
               unsized="true"
               loading="lazy"
@@ -80,7 +81,7 @@ export default function Home() {
           <div className="productBox">
             <h3>Headphones</h3>
             <Image
-              src="https://images.ctfassets.net/8cd2csgvqd3m/4LTok6tVuMsAeckUQAA6qO/39ce54c11181604e691ec101744f9426/h9i_black_hero.png"
+              src="https://images.ctfassets.net/8cd2csgvqd3m/4LTok6tVuMsAeckUQAA6qO/39ce54c11181604e691ec101744f9426/h9i_black_hero.png?q=90&fm=webp&w=480&h=480&fit=fill"
               alt="Speaker link image"
               unsized="true"
               loading="lazy"
@@ -91,7 +92,7 @@ export default function Home() {
           <div className="productBox">
             <h3>Televisions</h3>
             <Image
-              src="https://images.ctfassets.net/8cd2csgvqd3m/221e09q878ELXXTP1LFck2/4e1a4fbce8a96eebdc12d0d922a14a6a/BeoVisionV300-77-Closed-Oak-F0.png"
+              src="https://images.ctfassets.net/8cd2csgvqd3m/221e09q878ELXXTP1LFck2/4e1a4fbce8a96eebdc12d0d922a14a6a/BeoVisionV300-77-Closed-Oak-F0.png?q=90&fm=webp&w=480&h=480&fit=fill"
               alt="Speaker link image"
               unsized="true"
               loading="lazy"
@@ -102,13 +103,7 @@ export default function Home() {
         </section>
 
         <section className="contactBox">
-          <Image
-            src="https://images.ctfassets.net/8cd2csgvqd3m/2NSY7fMTkrhQdB5er4wPUS/ee5d19ad34b62152ac46ff0172af685d/mail-icon.svg"
-            alt="Speaker link image"
-            unsized="true"
-            loading="lazy"
-            quality="100"
-          />
+          <MailIcon className="mailIcon" />
           <h4>STAY IN TOUCH</h4>
           <p>Sign up for our newsletter to receive customized product news, updates and special invites.</p>
 
