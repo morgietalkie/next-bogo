@@ -17,7 +17,7 @@ export default function Header() {
             <div className="burgerLines"></div>
           </div>
           <div className="linkWrapper">
-            <li className="menuLink">
+            <li active- className="menuLink">
               <Link href="/blog">Blog</Link>
             </li>
             <li className="menuLink">
@@ -34,5 +34,6 @@ export default function Header() {
 }
 
 function burgerClicked(e) {
+  console.log(e.target);
   e.target.parentNode.classList.toggle("menuOpen");
 }
