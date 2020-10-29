@@ -9,9 +9,11 @@ export default function About() {
         <title>About Yeah</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div>
-        <h1>About</h1>
-      </div>
+      <main className="content">
+        <section>
+          <h1>About</h1>
+        </section>
+      </main>
     </Layout>
   );
 }

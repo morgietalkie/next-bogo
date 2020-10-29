@@ -1,3 +1,35 @@
+@font-face {
+  font-family: bebas-neue-pro, plantin;
+  font-display: block;
+}
+
+:root {
+  --primary-color: #030303;
+
+  --light-yellow: #fefea0;
+  --dark-yellow: #c8ac2c;
+
+  --light-gray: #f4f4f4;
+  --dark-gray: #242424;
+  --primary-shadow: #00000017 0px 0px 55px;
+
+  --sans-font: bebas-neue-pro;
+  --serif-font: plantin;
+}
+* {
+  transition: 0.8s cubic-bezier(0.33, 0.11, 0, 1);
+}
+
+*,
+h1,
+h2,
+h3,
+h4 {
+  font-family: bebas-neue-pro, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
 h1 {
   color: black;
 }

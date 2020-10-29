@@ -6,22 +6,33 @@ export default function Header() {
     <header>
       <nav>
         <ul>
-          <li className="id">
+          <li id="logo">
             <Link href="/">
               <Logo />
             </Link>
           </li>
-          <li className="id">
-            <Link href="/blog">Blog</Link>
-          </li>
-          <li className="id">
-            <Link href="/about">About</Link>
-          </li>
-          <li className="id">
-            <Link href="/contact">Contact</Link>
-          </li>
+
+          <div role="button" className="burgerMenu" onClick={burgerClicked} tabIndex={0}>
+            <div className="burgerLines"></div>
+            <div className="burgerLines"></div>
+          </div>
+          <div className="linkWrapper">
+            <li className="menuLink">
+              <Link href="/blog">Blog</Link>
+            </li>
+            <li className="menuLink">
+              <Link href="/about">About</Link>
+            </li>
+            <li className="menuLink">
+              <Link href="/contact">Contact</Link>
+            </li>
+          </div>
         </ul>
       </nav>
     </header>
   );
+}
+
+function burgerClicked(e) {
+  e.target.parentNode.classList.toggle("menuOpen");
 }

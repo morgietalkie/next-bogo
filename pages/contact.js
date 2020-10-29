@@ -8,9 +8,11 @@ export default function Contact() {
         <title>Contact</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div>
-        <h1>Contact</h1>
-      </div>
+      <main className="content">
+        <section>
+          <h1>Contact page</h1>
+        </section>
+      </main>
     </Layout>
   );
 }
