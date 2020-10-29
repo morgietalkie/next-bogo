@@ -4,26 +4,26 @@
 }
 
 :root {
-  --primary-color: #030303;
+  --primary-color: rgb(56, 56, 56);
 
-  --light-yellow: #fefea0;
-  --dark-yellow: #c8ac2c;
-
-  --light-gray: #f4f4f4;
-  --dark-gray: #242424;
-  --primary-shadow: #00000017 0px 0px 55px;
-
-  --sans-font: bebas-neue-pro;
-  --serif-font: plantin;
+  --primary-text: #444444;
 }
 
+.react-parallax {
+  z-index: 0;
+  position: relative;
+  margin-top: 0;
+
+  img {
+    object-fit: cover;
+  }
+}
 *,
 h1,
 h2,
 h3,
 h4 {
   font-family: bebas-neue-pro, sans-serif;
-  font-weight: 600;
   font-style: normal;
 }
 
