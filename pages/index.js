@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Well done</title>
+        <title>B&o test site</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main className="contentIndex">
