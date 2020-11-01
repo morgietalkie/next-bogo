@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAC;EACd,aAAa,EAAE,IAAI;EACnB,SAAS,EAAE,IAAI;CAChB;;AAED,AAAA,eAAe,CAAC;EACd,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,UAAU,EAAE,KAAK;EACjB,QAAQ,EAAE,KAAK;EACf,OAAO,EAAE,IAAI;EACb,GAAG,EAAE,CAAC;CACP;;AAED,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,CAAC;EACV,cAAc,EAAE,IAAI;EACpB,UAAU,EAAE,YAAY;CACzB",
+    "sources": [
+        "newsLetter.scss"
+    ],
+    "names": [],
+    "file": "newsLetter.css"
+}

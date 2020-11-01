@@ -1,0 +1,10 @@
+footer {
+  width: 100vw;
+  background-color: #fafafa;
+  height: 400px;
+  border-top: #00000013 1px solid;
+  color: var(--primary-color);
+  text-align: center;
+  padding-top: 50px;
+}
+/*# sourceMappingURL=footer.css.map */

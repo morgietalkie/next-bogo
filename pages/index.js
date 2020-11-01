@@ -131,7 +131,4 @@ Home.getInitialProps = async function (context) {
   );
 };
 
-function test(props) {
-  console.log(props);
-}
 export default Home;
