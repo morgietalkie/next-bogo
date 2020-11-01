@@ -18,8 +18,6 @@ const Home = (props) => {
       </Head>
       <main className="contentIndex">
         <section className="splashImage">
-          <p>{test(props)}</p>
-
           <Parallax bgImage={props.imageUrl} bgImageAlt="the cat" strength={-100}>
             <div style={{ height: "100vh" }} />
           </Parallax>
