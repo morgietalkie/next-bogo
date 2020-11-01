@@ -6,19 +6,28 @@ export default {
 
   fields: [
     {
+      name: "pageTitle",
+      title: "Page title",
+      type: "string",
+    },
+    {
+      name: "metaDescription",
+      title: "Meta Description",
+      type: "text",
+    },
+    {
       name: "image",
       title: "Splash image",
       type: "image",
     },
 
     {
-      name: "categories",
-      title: "Categories",
+      name: "infoBoxes",
+      title: "Infoboxes",
       type: "array",
       of: [
         {
-          type: "reference",
-          to: { type: "product" },
+          type: "infoBoxes",
         },
       ],
     },

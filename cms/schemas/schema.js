@@ -13,6 +13,10 @@ import localeString from "./locale/String";
 import localeText from "./locale/Text";
 import localeBlockContent from "./locale/BlockContent";
 import frontPage from "./frontPage";
+import infoBoxes from "./infoBoxes";
+import header from "./header";
+import footer from "./footer";
+import headerArray from "./headerArray";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -33,5 +37,9 @@ export default createSchema({
     localeString,
     productVariant,
     frontPage,
+    infoBoxes,
+    header,
+    footer,
+    headerArray,
   ]),
 });

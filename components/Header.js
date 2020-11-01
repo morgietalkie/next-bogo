@@ -5,10 +5,14 @@ import { AiOutlineShopping, AiOutlineQuestionCircle } from "react-icons/ai";
 import { GrLocation } from "react-icons/gr";
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props.links);
+  }
   componentDidMount() {
     scrollFunction();
   }
-  render() {
+  render(props) {
     return (
       <header>
         <nav className="primaryNav">
@@ -18,6 +22,7 @@ class Header extends React.Component {
               <div className="burgerLines"></div>
             </div>
 
+            <p>{test(props)}</p>
             <li id="logo">
               <Link href="/">
                 <a>
@@ -109,4 +114,22 @@ function scrolled() {
   } else {
     document.querySelector("header").classList.remove("scrolled");
   }
+}
+
+Header.getInitialProps = async function (context) {
+  // It's important to default the slug so that it doesn't return "undefined"
+  const { Header = "" } = context.query;
+  return await client.fetch(
+    `
+    *[_type == "header"]{
+      "links":links
+    }
+
+  `,
+    { Header }
+  );
+};
+
+function test(props) {
+  console.log(props);
 }

@@ -108,7 +108,7 @@
     }
   }
 
-  .textBox:nth-child(odd) {
+  .intersectionObserverTextBox:nth-child(odd) {
     direction: rtl;
     .leftWrapper {
       direction: ltr;
@@ -232,4 +232,19 @@
     background: #000;
     color: white;
   }
+}
+
+.intersectionObserverTextBox {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: 0.5s opacity;
+  transition-delay: 0.5s;
+}
+
+.intersectionObserverTextBoxTrue {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1s;
+
+  transition: 0.5s opacity;
 }
