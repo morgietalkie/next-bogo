@@ -117,10 +117,10 @@ const Home = (props) => {
   );
 };
 
-Home.getInitialProps = async function (context) {
+Home.getInitialProps = function (context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { Home = "" } = context.query;
-  return await client.fetch(
+  return client.fetch(
     `
     *[_type == "frontPage"][0]{
       "imageUrl": image.asset->url
