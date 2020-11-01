@@ -3,11 +3,13 @@ import Layout from "../components/Layout";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
-import MailIcon from "../static/mail-icon.svg";
+import client from "../client";
 
 import { Parallax } from "react-parallax";
 
-export default function Home() {
+import NewsLetter from "../components/NewsLetter";
+
+const Home = (props) => {
   return (
     <Layout>
       <Head>
@@ -16,7 +18,9 @@ export default function Home() {
       </Head>
       <main className="contentIndex">
         <section className="splashImage">
-          <Parallax bgImage="/static/primaryBackground.jpg" bgImageAlt="the cat" strength={-100}>
+          <p>{test(props)}</p>
+
+          <Parallax bgImage={props.imageUrl} bgImageAlt="the cat" strength={-100}>
             <div style={{ height: "100vh" }} />
           </Parallax>
         </section>
@@ -35,7 +39,7 @@ export default function Home() {
             <Parallax
               bgImage="https://images.ctfassets.net/8cd2csgvqd3m/ycJA1hY3euZ212UAG4Ucf/3364522a764de79b4fdbf2dfd46f4491/H95_travel_man_2.jpg?q=90&fm=webp&w=828&h=828&fit=fill"
               bgImageAlt="the cat"
-              strength={100}
+              strength={50}
             >
               <div style={{ height: "100vh" }} />
             </Parallax>
@@ -59,7 +63,7 @@ export default function Home() {
             <Parallax
               bgImage="https://images.ctfassets.net/8cd2csgvqd3m/5yolox57Zj1KjlnS899Cq8/f8373b6ce3e770e7a0b7518a3539040b/LS_07.2020_Halo_Alu_Table.jpg?q=90&fm=webp&w=828&h=828&fit=fill"
               bgImageAlt="the cat"
-              strength={100}
+              strength={50}
             >
               <div style={{ height: "100vh" }} />
             </Parallax>
@@ -67,54 +71,67 @@ export default function Home() {
         </section>
 
         <section className="productGrid">
-          <div className="productBox">
-            <h3>Speakers</h3>
-            <Image
-              src="https://images.ctfassets.net/8cd2csgvqd3m/1MW5Ya0oS4ub8jlu8YkuJQ/da12a5d4d6444a8f65786a7dda4474d0/A9-smoked.png?q=90&fm=webp&w=480&h=480&fit=fill"
-              alt="Speaker link image"
-              unsized="true"
-              loading="lazy"
-              quality="100"
-            />
-            <Link href="/">View all</Link> <BsArrowRight />
-          </div>
-          <div className="productBox">
-            <h3>Headphones</h3>
-            <Image
-              src="https://images.ctfassets.net/8cd2csgvqd3m/4LTok6tVuMsAeckUQAA6qO/39ce54c11181604e691ec101744f9426/h9i_black_hero.png?q=90&fm=webp&w=480&h=480&fit=fill"
-              alt="Speaker link image"
-              unsized="true"
-              loading="lazy"
-              quality="100"
-            />
-            <Link href="/">View all</Link> <BsArrowRight />
-          </div>
-          <div className="productBox">
-            <h3>Televisions</h3>
-            <Image
-              src="https://images.ctfassets.net/8cd2csgvqd3m/221e09q878ELXXTP1LFck2/4e1a4fbce8a96eebdc12d0d922a14a6a/BeoVisionV300-77-Closed-Oak-F0.png?q=90&fm=webp&w=480&h=480&fit=fill"
-              alt="Speaker link image"
-              unsized="true"
-              loading="lazy"
-              quality="100"
-            />
-            <Link href="/">View all</Link> <BsArrowRight />
-          </div>
+          <Link className="squareLink" href="/speakers">
+            <div className="productBox">
+              <h3>Speakers</h3>
+              <Image
+                src="https://images.ctfassets.net/8cd2csgvqd3m/1MW5Ya0oS4ub8jlu8YkuJQ/da12a5d4d6444a8f65786a7dda4474d0/A9-smoked.png?q=90&fm=webp&w=480&h=480&fit=fill"
+                alt="Speaker link image"
+                unsized="true"
+                loading="lazy"
+                quality="100"
+              />
+              <Link href="/">View all</Link> <BsArrowRight />
+            </div>
+          </Link>
+          <Link className="squareLink" href="/Headphones">
+            <div className="productBox">
+              <h3>Headphones</h3>
+              <Image
+                src="https://images.ctfassets.net/8cd2csgvqd3m/4LTok6tVuMsAeckUQAA6qO/39ce54c11181604e691ec101744f9426/h9i_black_hero.png?q=90&fm=webp&w=480&h=480&fit=fill"
+                alt="Speaker link image"
+                unsized="true"
+                loading="lazy"
+                quality="100"
+              />
+              <Link href="/">View all</Link> <BsArrowRight />
+            </div>
+          </Link>
+          <Link className="squareLink" href="/televisions">
+            <div className="productBox">
+              <h3>Televisions</h3>
+              <Image
+                src="https://images.ctfassets.net/8cd2csgvqd3m/221e09q878ELXXTP1LFck2/4e1a4fbce8a96eebdc12d0d922a14a6a/BeoVisionV300-77-Closed-Oak-F0.png?q=90&fm=webp&w=480&h=480&fit=fill"
+                alt="Speaker link image"
+                unsized="true"
+                loading="lazy"
+                quality="100"
+              />
+              <Link href="/">View all</Link> <BsArrowRight />
+            </div>
+          </Link>
         </section>
-
-        <section className="contactBox">
-          <MailIcon className="mailIcon" />
-          <h4>STAY IN TOUCH</h4>
-          <p>Sign up for our newsletter to receive customized product news, updates and special invites.</p>
-
-          <form action="">
-            <input type="text" placeholder="Email" />
-            <button>
-              Subscribe <BsArrowRight />
-            </button>
-          </form>
-        </section>
+        <NewsLetter />
       </main>
     </Layout>
   );
+};
+
+Home.getInitialProps = async function (context) {
+  // It's important to default the slug so that it doesn't return "undefined"
+  const { Home = "" } = context.query;
+  return await client.fetch(
+    `
+    *[_type == "frontPage"][0]{
+      "imageUrl": image.asset->url
+
+    }
+  `,
+    { Home }
+  );
+};
+
+function test(props) {
+  console.log(props);
 }
+export default Home;

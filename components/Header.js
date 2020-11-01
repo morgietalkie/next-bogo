@@ -20,7 +20,9 @@ class Header extends React.Component {
 
             <li id="logo">
               <Link href="/">
-                <Logo />
+                <a>
+                  <Logo />
+                </a>
               </Link>
             </li>
             <div className="linkWrapper">
@@ -43,18 +45,24 @@ class Header extends React.Component {
 
             <div className="iconWrapper">
               <li>
-                <Link href="/">
-                  <AiOutlineQuestionCircle />
+                <Link href="/about">
+                  <a>
+                    <AiOutlineQuestionCircle />
+                  </a>
                 </Link>
               </li>
               <li>
                 <Link href="/">
-                  <GrLocation />
+                  <a>
+                    <GrLocation />
+                  </a>
                 </Link>
               </li>
               <li>
                 <Link href="/">
-                  <AiOutlineShopping />
+                  <a>
+                    <AiOutlineShopping />
+                  </a>
                 </Link>
               </li>
             </div>

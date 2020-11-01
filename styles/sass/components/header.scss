@@ -88,13 +88,15 @@ header {
 
     li {
       margin: 0 8px;
-      display: none;
+      opacity: 0;
       z-index: 300;
       font-size: 20px;
+      transform: translate(3px, 0);
     }
 
     li:nth-child(3) {
-      display: block;
+      opacity: 1;
+      transform: translate(0, 0);
     }
   }
 
@@ -109,6 +111,7 @@ header {
     position: relative;
     height: 25px;
     width: auto;
+    outline: none;
 
     .burgerLines {
       background-color: var(--primary-color);
@@ -148,7 +151,14 @@ header {
       height: auto;
       overflow: visible;
       li {
-        display: block;
+        opacity: 1;
+        transition: 1s;
+        translate: 0;
+        transform: translate(0, 0);
+      }
+      li:nth-child(1) {
+        transition: 0.8s;
+        transition-delay: 0.2s;
       }
     }
 
@@ -218,7 +228,8 @@ header {
     .iconWrapper {
       li {
         cursor: pointer;
-        display: block;
+        opacity: 1;
+        transform: translate(0);
       }
     }
   }
