@@ -1,6 +1,32 @@
-// pages/_app.js
 import styles from "../styles/styles.scss";
+import client from "../client";
 
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+import { AppContext } from "../components/useAppContext";
+
+function MyApp({ Component, pageProps, headerData }) {
+  console.log(headerData[headerData.length - 1]);
+  return (
+    <AppContext.Provider value={{ headerData }}>
+      <Component {...pageProps} />
+    </AppContext.Provider>
+  );
 }
+
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  const headerData = await client.fetch(
+    `*[_type == "header"]{
+      "linkRef": links[]{
+      links->
+    },
+          "linkImages":links[].image.asset->{url, _id}
+    }
+`
+  );
+
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  return { pageProps, headerData };
+};
+export default MyApp;

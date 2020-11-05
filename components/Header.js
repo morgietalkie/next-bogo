@@ -1,18 +1,19 @@
 import Link from "next/link";
 import Logo from "../static/logo.svg";
+import React, { Component, createContext } from "react";
+import Image from "next/image";
+
+import { useAppContext, AppContext } from "./useAppContext";
 
 import { AiOutlineShopping, AiOutlineQuestionCircle } from "react-icons/ai";
 import { GrLocation } from "react-icons/gr";
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props.links);
-  }
   componentDidMount() {
     scrollFunction();
   }
-  render(props) {
+
+  render() {
     return (
       <header>
         <nav className="primaryNav">
@@ -22,7 +23,6 @@ class Header extends React.Component {
               <div className="burgerLines"></div>
             </div>
 
-            <p>{test(props)}</p>
             <li id="logo">
               <Link href="/">
                 <a>
@@ -30,23 +30,27 @@ class Header extends React.Component {
                 </a>
               </Link>
             </li>
-            <div className="linkWrapper">
-              <li className="menuLink">
-                <Link href="/">Speakers</Link>
-              </li>
-              <li className="menuLink">
-                <Link href="/">Headphones</Link>
-              </li>
-              <li className="menuLink">
-                <Link href="/">Televisions</Link>
-              </li>
-              <li className="menuLink">
-                <Link href="/">Accessories</Link>
-              </li>
-              <li className="menuLink">
-                <Link href="/">Stories</Link>
-              </li>
-            </div>
+            <AppContext.Consumer>
+              {(headerData) => {
+                return (
+                  <div className="linkWrapper">
+                    {headerData.headerData[0].linkRef.map((link, i) => {
+                      return (
+                        <li id={`linkID${i}`} key={link.links._id} className="menuLink" onMouseOut={reduceImg} onMouseOver={expandImg}>
+                          <Link href={`/${link.links.slug.current}`}>{link.links.title}</Link>
+                        </li>
+                      );
+                    })}
+
+                    <div className="imageWrapper">
+                      {headerData.headerData[0].linkImages.map((image, i) => {
+                        return <Image key={image._id} id={`imageID${i}`} src={image.url} alt="altText" unsized="true" loading="lazy" quality="100" />;
+                      })}
+                    </div>
+                  </div>
+                );
+              }}
+            </AppContext.Consumer>
 
             <div className="iconWrapper">
               <li>
@@ -75,21 +79,21 @@ class Header extends React.Component {
         </nav>
         <nav className="subNav">
           <ul>
-            <li>
-              <Link href="/">Speakers</Link>
-            </li>
-            <li>
-              <Link href="/">Headphones</Link>
-            </li>
-            <li>
-              <Link href="/">Televisions</Link>
-            </li>
-            <li>
-              <Link href="/">Accessories</Link>
-            </li>
-            <li>
-              <Link href="/">Stories</Link>
-            </li>
+            <AppContext.Consumer>
+              {(headerData) => {
+                return (
+                  <div className="linkContainer">
+                    {headerData.headerData[0].linkRef.map((link, i) => {
+                      return (
+                        <li key={link.links._id} className="menuLink">
+                          <Link href={`/${link.links.slug.current}`}>{link.links.title}</Link>
+                        </li>
+                      );
+                    })}
+                  </div>
+                );
+              }}
+            </AppContext.Consumer>
           </ul>
         </nav>
       </header>
@@ -100,7 +104,6 @@ class Header extends React.Component {
 export default Header;
 
 function burgerClicked(e) {
-  console.log(e.target);
   e.target.parentNode.classList.toggle("menuOpen");
 }
 
@@ -116,20 +119,28 @@ function scrolled() {
   }
 }
 
-Header.getInitialProps = async function (context) {
-  // It's important to default the slug so that it doesn't return "undefined"
-  const { Header = "" } = context.query;
-  return await client.fetch(
-    `
-    *[_type == "header"]{
-      "links":links
-    }
+function expandImg(e) {
+  let linkID = e.target.parentNode.id;
 
-  `,
-    { Header }
-  );
-};
+  let ID = linkID.replace("linkID", "");
 
-function test(props) {
-  console.log(props);
+  let imageWrapper = e.target.parentNode.parentNode;
+
+  console.log(imageWrapper);
+
+  imageWrapper.querySelector("#imageID" + ID).style.maxWidth = "50vw";
+
+  imageWrapper.querySelector(".imageWrapper").style.opacity = "1";
+}
+
+function reduceImg(e) {
+  let linkID = e.target.parentNode.id;
+
+  let ID = linkID.replace("linkID", "");
+
+  let imageWrapper = e.target.parentNode.parentNode;
+
+  imageWrapper.querySelector("#imageID" + ID).style.maxWidth = "0vw";
+
+  imageWrapper.querySelector(".imageWrapper").style.opacity = "0";
 }

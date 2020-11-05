@@ -28,12 +28,13 @@ const Home = (props) => {
         {props.infoBoxes.map((infoBox, index) => {
           return (
             <InView
+              key={index}
               onChange={(inView, entry) => {
                 inView === true ? entry.target.classList.add("intersectionObserverTextBoxTrue") : entry.target.classList.remove("intersectionObserverTextBoxTrue");
               }}
               className="intersectionObserverTextBox"
             >
-              <section key={index} className="textBox">
+              <section className="textBox">
                 <div className="leftWrapper">
                   <div className="textContent">
                     <p className="category">{props.productTitle[index]}</p>
@@ -107,14 +108,14 @@ Home.getInitialProps = async function (context) {
     `
     *[_type == "frontPage"][0]{
       "imageUrl": image.asset->url,
-      "pageTitle": pageTitle,
-      "metaDescription": metaDescription,
-      "infoBoxes": infoBoxes[],
+       pageTitle,
+       metaDescription,
+      infoBoxes,
       "infoBoxImage": infoBoxes[].image.asset->url,
       "productTitle": infoBoxes[].product->title
 
-
     }
+
   `,
     { Home }
   );

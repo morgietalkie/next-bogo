@@ -6,6 +6,6 @@ module.exports = withCSS(withSass());
 
 module.exports = {
   images: {
-    domains: ["via.placeholder.com", "images.ctfassets.net"],
+    domains: ["cdn.sanity.io", "via.placeholder.com", "images.ctfassets.net"],
   },
 };
