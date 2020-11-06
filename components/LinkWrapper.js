@@ -16,8 +16,6 @@ export async function getInitialProps() {
               `
   );
 
-  console.log(posts);
-
   return {
     props: {
       data,

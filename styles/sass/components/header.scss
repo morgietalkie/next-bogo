@@ -230,13 +230,47 @@ header {
       opacity: 1;
       transition: 0.2s opacity;
     }
+
+    .linkWrapper {
+      padding-bottom: 0;
+      justify-content: center;
+      font-size: 50px;
+      .menuLink {
+        margin: 30px 20px 20px auto;
+      }
+    }
+
     .menuOpen {
       .linkWrapper {
-        transition: 0.8s left;
+        transition: 0.8s;
+        transition-property: left, background;
+
+        .menuLink {
+          margin: 30px 20px 20px auto;
+
+          a {
+            position: relative;
+          }
+          a::after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            right: 0;
+            bottom: -4px;
+            background-color: var(--primary-color);
+            max-width: 0%;
+            transition: 1s;
+          }
+
+          a:hover::after {
+            max-width: 100%;
+          }
+        }
       }
       .imageWrapper {
         display: block;
-        height: 400px;
+        height: 500px;
         max-height: 500px;
         width: 50vw;
         position: absolute;
@@ -251,13 +285,13 @@ header {
           opacity: 1;
           height: 100%;
           width: 100%;
-          transition: 2s max-width cubic-bezier(0.17, 1.13, 0.65, 0.95);
+          transition: 1.6s max-width cubic-bezier(0.17, 1.13, 0.65, 0.95);
 
           max-width: 0;
           min-height: 100%;
           position: absolute;
           top: 0;
-          left: 0;
+          left: 50px;
           object-fit: cover;
         }
       }

@@ -116,7 +116,6 @@ class Header extends React.Component {
 export default Header;
 
 function burgerClicked(e) {
-  console.log(e.target);
   e.target.parentNode.classList.toggle("menuOpen");
 }
 
@@ -130,8 +129,4 @@ function scrolled() {
   } else {
     document.querySelector("header").classList.remove("scrolled");
   }
-}
-
-function log(params) {
-  console.log(params);
 }

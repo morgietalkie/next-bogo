@@ -37,7 +37,7 @@ class Header extends React.Component {
                     {headerData.headerData[0].linkRef.map((link, i) => {
                       return (
                         <li id={`linkID${i}`} key={link.links._id} className="menuLink" onMouseOut={reduceImg} onMouseOver={expandImg}>
-                          <Link href={`/${link.links.slug.current}`}>{link.links.title}</Link>
+                          <Link href={`/categories/${link.links.slug.current}`}>{link.links.title}</Link>
                         </li>
                       );
                     })}
@@ -86,7 +86,7 @@ class Header extends React.Component {
                     {headerData.headerData[0].linkRef.map((link, i) => {
                       return (
                         <li key={link.links._id} className="menuLink">
-                          <Link href={`/${link.links.slug.current}`}>{link.links.title}</Link>
+                          <Link href={`/categories/${link.links.slug.current}`}>{link.links.title}</Link>
                         </li>
                       );
                     })}
@@ -125,8 +125,6 @@ function expandImg(e) {
   let ID = linkID.replace("linkID", "");
 
   let imageWrapper = e.target.parentNode.parentNode;
-
-  console.log(imageWrapper);
 
   imageWrapper.querySelector("#imageID" + ID).style.maxWidth = "50vw";
 

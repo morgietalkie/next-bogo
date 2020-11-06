@@ -18,9 +18,9 @@ export default {
       },
     },
     {
-      name: "video",
-      title: "Video",
-      type: "file",
+      name: "splashImage",
+      title: "Banner",
+      type: "image",
     },
     {
       name: "parents",

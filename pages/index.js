@@ -10,7 +10,7 @@ import { Parallax } from "react-parallax";
 
 import NewsLetter from "../components/NewsLetter";
 
-const Home = (props) => {
+const Home = (props, params) => {
   useEffect(
     () =>
       setTimeout(() => {
@@ -22,18 +22,18 @@ const Home = (props) => {
   return (
     <Layout>
       <Head>
-        <title>{props.pageTitle}</title>
-        <meta name="description" content={props.metaDescription} />
+        <title>{props.data.pageTitle}</title>
+        <meta name="description" content={props.data.metaDescription} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main className="contentIndex">
         <section className="splashImage">
-          <Parallax bgImage={props.imageUrl} bgImageAlt="the cat" strength={-100}>
+          <Parallax bgImage={props.data.imageUrl} bgImageAlt="the cat" strength={-100}>
             <div style={{ height: "calc(100vh - 40px)" }} />
           </Parallax>
         </section>
 
-        {props.infoBoxes.map((infoBox, index) => {
+        {props.data.infoBoxes.map((infoBox, index) => {
           return (
             <InView
               key={index}
@@ -45,7 +45,7 @@ const Home = (props) => {
               <section className="textBox">
                 <div className="leftWrapper">
                   <div className="textContent">
-                    <p className="category">{props.productTitle[index]}</p>
+                    <p className="category">{props.data.productTitle[index]}</p>
                     <h2>{infoBox.title}</h2>
                     <span>–</span>
                     <p className="description">{infoBox.description} </p>
@@ -53,7 +53,7 @@ const Home = (props) => {
                   </div>
                 </div>
                 <div className="rightWrapper">
-                  <Parallax bgImage={props.infoBoxImage[index]} bgImageAlt="the cat" strength={50}>
+                  <Parallax bgImage={props.data.infoBoxImage[index]} bgImageAlt="the cat" strength={50}>
                     <div style={{ height: "100vh" }} />
                   </Parallax>
                 </div>
@@ -63,13 +63,13 @@ const Home = (props) => {
         })}
 
         <section className="productGrid">
-          {props.links.map((link, i) => {
+          {props.data.links.map((link, i) => {
             return (
-              <Link key={link.links.title} className="squareLink" href={`/${link.links.slug.current}`}>
+              <Link key={link.links.title} className="squareLink" href={`/categories/${link.links.slug.current}`}>
                 <div className="productBox">
                   <h3>{link.links.title}</h3>
-                  <Image src={props.linkImages[i].url} alt="Speaker link image" unsized="true" layout="fill" loading="lazy" />
-                  <Link href={`/${link.links.slug.current}`}>View all</Link> <BsArrowRight />
+                  <Image src={props.data.linkImages[i].url} alt="Speaker link image" unsized="true" layout="fill" loading="lazy" />
+                  <Link href={`/categories/${link.links.slug.current}`}>View all</Link> <BsArrowRight />
                 </div>
               </Link>
             );
@@ -83,10 +83,10 @@ const Home = (props) => {
 
 export default Home;
 
-Home.getInitialProps = async function (context) {
+export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
-  const { Home = "" } = context.query;
-  return await client.fetch(
+  // const { Home = "" } = context.query;
+  const data = await client.fetch(
     `
     *[_type == "frontPage"][0]{
       "imageUrl": image.asset->url,
@@ -104,7 +104,12 @@ Home.getInitialProps = async function (context) {
 
     }
 
-  `,
-    { Home }
+  `
   );
-};
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
