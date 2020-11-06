@@ -23,8 +23,8 @@ export default {
       type: "image",
     },
     {
-      name: "parents",
-      title: "Parent categories",
+      name: "children",
+      title: "Sub categories",
       type: "array",
       of: [
         {

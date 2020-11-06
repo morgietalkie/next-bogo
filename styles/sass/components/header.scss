@@ -91,6 +91,13 @@ header {
   .iconWrapper {
     display: flex;
 
+    li:nth-child(1) svg path {
+      fill: #1a1a1a;
+    }
+    li:nth-child(3) svg path {
+      fill: #1a1a1a;
+    }
+
     li {
       margin: 0 8px;
       opacity: 0;

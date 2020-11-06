@@ -24,6 +24,7 @@
     background-color: var(--primary-color);
     max-width: 100%;
     animation: expandLine 1s forwards;
+    animation-delay: 1s;
   }
 
   @keyframes expandLine {

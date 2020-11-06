@@ -36,7 +36,7 @@ class Header extends React.Component {
                   <div className="linkWrapper">
                     {headerData.headerData[0].linkRef.map((link, i) => {
                       return (
-                        <li id={`linkID${i}`} key={link.links._id} className="menuLink" onMouseOut={reduceImg} onMouseOver={expandImg}>
+                        <li onClick={burgerClickedInsideLinkWrapper} id={`linkID${i}`} key={link.links._id} className="menuLink" onMouseOut={reduceImg} onMouseOver={expandImg}>
                           <Link href={`/categories/${link.links.slug.current}`}>{link.links.title}</Link>
                         </li>
                       );
@@ -105,6 +105,12 @@ export default Header;
 
 function burgerClicked(e) {
   e.target.parentNode.classList.toggle("menuOpen");
+}
+
+function burgerClickedInsideLinkWrapper(e) {
+  setTimeout(() => {
+    e.target.parentNode.parentNode.parentNode.classList.toggle("menuOpen");
+  }, 200);
 }
 
 function scrollFunction() {
