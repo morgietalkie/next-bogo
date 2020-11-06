@@ -31,6 +31,17 @@ export default {
         },
       ],
     },
+
+    {
+      name: "links",
+      title: "Links",
+      type: "array",
+      of: [
+        {
+          type: "headerArray",
+        },
+      ],
+    },
   ],
 
   preview: {

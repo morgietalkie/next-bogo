@@ -4,7 +4,6 @@ import client from "../client";
 import { AppContext } from "../components/useAppContext";
 
 function MyApp({ Component, pageProps, headerData }) {
-  console.log(headerData[headerData.length - 1]);
   return (
     <AppContext.Provider value={{ headerData }}>
       <Component {...pageProps} />

@@ -5,12 +5,20 @@ import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import client from "../client";
 import { InView } from "react-intersection-observer";
-
+import { useEffect } from "react";
 import { Parallax } from "react-parallax";
 
 import NewsLetter from "../components/NewsLetter";
 
 const Home = (props) => {
+  useEffect(
+    () =>
+      setTimeout(() => {
+        document.querySelector(".contentIndex").style.opacity = "1";
+      }, 500),
+    []
+  );
+
   return (
     <Layout>
       <Head>
@@ -21,7 +29,7 @@ const Home = (props) => {
       <main className="contentIndex">
         <section className="splashImage">
           <Parallax bgImage={props.imageUrl} bgImageAlt="the cat" strength={-100}>
-            <div style={{ height: "100vh" }} />
+            <div style={{ height: "calc(100vh - 40px)" }} />
           </Parallax>
         </section>
 
@@ -55,51 +63,25 @@ const Home = (props) => {
         })}
 
         <section className="productGrid">
-          <Link className="squareLink" href="/speakers">
-            <div className="productBox">
-              <h3>Speakers</h3>
-              <Image
-                src="https://images.ctfassets.net/8cd2csgvqd3m/1MW5Ya0oS4ub8jlu8YkuJQ/da12a5d4d6444a8f65786a7dda4474d0/A9-smoked.png?q=90&fm=webp&w=480&h=480&fit=fill"
-                alt="Speaker link image"
-                unsized="true"
-                loading="lazy"
-                quality="100"
-              />
-              <Link href="/">View all</Link> <BsArrowRight />
-            </div>
-          </Link>
-          <Link className="squareLink" href="/Headphones">
-            <div className="productBox">
-              <h3>Headphones</h3>
-              <Image
-                src="https://images.ctfassets.net/8cd2csgvqd3m/4LTok6tVuMsAeckUQAA6qO/39ce54c11181604e691ec101744f9426/h9i_black_hero.png?q=90&fm=webp&w=480&h=480&fit=fill"
-                alt="Speaker link image"
-                unsized="true"
-                loading="lazy"
-                quality="100"
-              />
-              <Link href="/">View all</Link> <BsArrowRight />
-            </div>
-          </Link>
-          <Link className="squareLink" href="/televisions">
-            <div className="productBox">
-              <h3>Televisions</h3>
-              <Image
-                src="https://images.ctfassets.net/8cd2csgvqd3m/221e09q878ELXXTP1LFck2/4e1a4fbce8a96eebdc12d0d922a14a6a/BeoVisionV300-77-Closed-Oak-F0.png?q=90&fm=webp&w=480&h=480&fit=fill"
-                alt="Speaker link image"
-                unsized="true"
-                loading="lazy"
-                quality="100"
-              />
-              <Link href="/">View all</Link> <BsArrowRight />
-            </div>
-          </Link>
+          {props.links.map((link, i) => {
+            return (
+              <Link key={link.links.title} className="squareLink" href={`/${link.links.slug.current}`}>
+                <div className="productBox">
+                  <h3>{link.links.title}</h3>
+                  <Image src={props.linkImages[i].url} alt="Speaker link image" loading="lazy" width={350} height={350} />
+                  <Link href={`/${link.links.slug.current}`}>View all</Link> <BsArrowRight />
+                </div>
+              </Link>
+            );
+          })}
         </section>
         <NewsLetter />
       </main>
     </Layout>
   );
 };
+
+export default Home;
 
 Home.getInitialProps = async function (context) {
   // It's important to default the slug so that it doesn't return "undefined"
@@ -112,7 +94,13 @@ Home.getInitialProps = async function (context) {
        metaDescription,
       infoBoxes,
       "infoBoxImage": infoBoxes[].image.asset->url,
-      "productTitle": infoBoxes[].product->title
+      "productTitle": infoBoxes[].product->title,
+      "links":
+      links[]{
+        links->
+      },
+      "links":links[]{links->,},
+	"linkImages": links[].image.asset->{url, _id}
 
     }
 
@@ -120,5 +108,3 @@ Home.getInitialProps = async function (context) {
     { Home }
   );
 };
-
-export default Home;
