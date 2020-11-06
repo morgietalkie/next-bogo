@@ -68,7 +68,7 @@ const Home = (props) => {
               <Link key={link.links.title} className="squareLink" href={`/${link.links.slug.current}`}>
                 <div className="productBox">
                   <h3>{link.links.title}</h3>
-                  <Image src={props.linkImages[i].url} alt="Speaker link image" loading="lazy" width={350} height={350} />
+                  <Image src={props.linkImages[i].url} alt="Speaker link image" unsized="true" layout="fill" loading="lazy" />
                   <Link href={`/${link.links.slug.current}`}>View all</Link> <BsArrowRight />
                 </div>
               </Link>
