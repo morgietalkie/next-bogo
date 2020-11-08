@@ -1,5 +1,8 @@
 import styles from "../styles/styles.scss";
+
 import client from "../client";
+import Router from "next/router";
+import NProgress from "nprogress";
 
 import { AppContext } from "../components/useAppContext";
 
@@ -28,4 +31,17 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   }
   return { pageProps, headerData };
 };
+
 export default MyApp;
+
+Router.onRouteChangeStart = (url) => {
+  // Some page has started loading
+
+  NProgress.start();
+};
+
+Router.onRouteChangeComplete = (url) => {
+  // Some page has finished loading
+
+  NProgress.done();
+};

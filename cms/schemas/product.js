@@ -17,6 +17,13 @@ export default {
         maxLength: 96,
       },
     },
+
+    {
+      name: "description",
+      title: "Description",
+      type: "blockContent",
+    },
+
     {
       title: "Default variant",
       name: "defaultProductVariant",
@@ -33,25 +40,25 @@ export default {
         },
       ],
     },
-    {
-      title: "Tags",
-      name: "tags",
-      type: "array",
-      of: [
-        {
-          type: "string",
-        },
-      ],
-      options: {
-        layout: "tags",
-      },
-    },
+    // {
+    //   title: "Tags",
+    //   name: "tags",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "string",
+    //     },
+    //   ],
+    //   options: {
+    //     layout: "tags",
+    //   },
+    // },
 
-    {
-      name: "blurb",
-      title: "Blurb",
-      type: "localeString",
-    },
+    // {
+    //   name: "blurb",
+    //   title: "Blurb",
+    //   type: "localeString",
+    // },
     {
       name: "categories",
       title: "Categories",
@@ -60,6 +67,17 @@ export default {
         {
           type: "reference",
           to: { type: "category" },
+        },
+      ],
+    },
+    {
+      name: "subCategories",
+      title: "Sub categories",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "subCategory" },
         },
       ],
     },

@@ -1,6 +1,9 @@
 .categoryContent {
-  margin: 50px 30px 0;
+  max-width: 1400px;
+  margin: 50px 0 0;
+  padding: 0 30px;
   opacity: 0;
+  width: 100%;
 
   h1 {
     margin: 0;
@@ -39,7 +42,8 @@
 
 @media only screen and (min-width: 700px) {
   .categoryContent {
-    margin: 200px 30px 0;
+    margin: 200px auto 0;
+    padding: 0 30px;
 
     h1 {
       margin: 0;
@@ -82,4 +86,197 @@
 .fadeOut {
   opacity: 0;
   transition: 0s opacity;
+}
+
+.categoryList {
+  width: calc(100vw - 60px);
+  max-width: 100%;
+  display: inline-block;
+  overflow: scroll;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  margin: 20px 0;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: max-content;
+    overflow-x: scoll;
+
+    width: 100%;
+    justify-content: space-between;
+
+    li {
+      position: relative;
+      margin: 0px 20px;
+      text-transform: uppercase;
+      padding: 11px 0;
+      width: fit-content;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 3px;
+      opacity: 0.5;
+      transition: 0.2s opacity;
+
+      a {
+        text-decoration: none;
+        white-space: nowrap;
+        padding: 11px 0;
+
+        color: var(--primary-color);
+      }
+    }
+
+    li::after {
+      content: "";
+      height: 2px;
+      width: 0%;
+      background: var(--primary-color);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: 0.5s width;
+    }
+
+    li:first-child {
+      margin: 0;
+      margin-right: 20px;
+    }
+    li:last-child {
+      margin: 0;
+      margin-left: 20px;
+    }
+
+    .selected {
+      opacity: 1;
+      position: relative;
+    }
+    .selected::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background: var(--primary-color);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    li:hover {
+      opacity: 1;
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.productList {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+
+    li {
+      text-align: center;
+      position: relative;
+      background-color: var(--light-gray);
+      margin-bottom: 30px;
+
+      .productInfo {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-align: center;
+
+        .colorList {
+          display: flex;
+          justify-content: center;
+
+          .color {
+            border-radius: 100%;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+
+          .colorBackground {
+            border: 1px solid rgb(160, 160, 160);
+            border-radius: 100%;
+            position: relative;
+            width: 22px;
+            height: 22px;
+            background-color: white;
+            margin: -4px;
+            margin-bottom: 10px;
+          }
+
+          .primaryColor {
+            z-index: 1;
+            border: 1px solid var(--primary-color);
+          }
+        }
+
+        .title {
+          font-weight: bold;
+          font-size: 13px;
+          letter-spacing: 1px;
+          margin-bottom: 6px;
+        }
+        .description {
+          font-weight: thin;
+          font-size: 13px;
+          letter-spacing: 1px;
+          margin-bottom: 8px;
+          opacity: 0.8;
+        }
+        .price {
+          font-weight: thin;
+          letter-spacing: 1px;
+          margin-bottom: 20px;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        background-color: none;
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .productList {
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+
+      li {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .productList {
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+
+      li {
+        margin: 0;
+      }
+    }
+  }
 }

@@ -17,6 +17,10 @@ import infoBoxes from "./infoBoxes";
 import header from "./header";
 import footer from "./footer";
 import headerArray from "./headerArray";
+import colorPickerWithName from "./colorPickerWithName";
+import subCategory from "./subCategory";
+import fullWidthImage from "./locale/fullWidthImage";
+import imageGrid from "./locale/imageGrid";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -41,5 +45,9 @@ export default createSchema({
     header,
     footer,
     headerArray,
+    colorPickerWithName,
+    subCategory,
+    fullWidthImage,
+    imageGrid,
   ]),
 });

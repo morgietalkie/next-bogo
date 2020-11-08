@@ -10,6 +10,7 @@ export default () =>
       S.listItem().title("Products").icon(MdViewModule).schemaType("product").child(S.documentTypeList("product").title("All products")),
 
       S.listItem().title("Categories").icon(MdStyle).schemaType("category").child(S.documentTypeList("category").title("All categories")),
+      S.listItem().title("Sub categories").icon(MdStyle).schemaType("subCategory").child(S.documentTypeList("subCategory").title("All sub categories")),
       S.divider(),
 
       S.listItem()
