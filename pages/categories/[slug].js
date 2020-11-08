@@ -64,13 +64,17 @@ export default function Category(props) {
                           <div className="colorBackground primaryColor">
                             <div className="color " style={{ backgroundColor: product.productColor.color.color.hex }}></div>
                           </div>
-                          {product.variants.map((variant) => {
-                            return (
-                              <div key={variant.color.color.hex} className="colorBackground">
-                                <div className="color" style={{ backgroundColor: variant.color.color.hex }}></div>
-                              </div>
-                            );
-                          })}
+                          {props.products.lenght > 0 && (
+                            <div>
+                              {product.variants.map((variant) => {
+                                return (
+                                  <div key={variant.color.color.hex} className="colorBackground">
+                                    <div className="color" style={{ backgroundColor: variant.color.color.hex }}></div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
                         <p className="title"> {product.title}</p>
                         <p className="description">{product.productTitle.title}</p>
