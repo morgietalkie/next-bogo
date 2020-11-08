@@ -37,13 +37,13 @@ export default function Category(props) {
           <section className="categoryList">
             <ul>
               <li className="selected" id="productlist">
-                <Link href="/categories/speakers#productlist">View All</Link>
+                <Link href={`/categories/${props.category.slug}#categoryList`}>View All</Link>
               </li>
 
               {props.category.subCategories.map((subCategory) => {
                 return (
                   <li key={subCategory._id}>
-                    <Link href={`/categories/speakers?subcategory=${subCategory.slug.current}#productlist`}>{subCategory.title}</Link>
+                    <Link href={`/categories/${props.category.slug}?subcategory=${subCategory.slug.current}#categoryList`}>{subCategory.title}</Link>
                   </li>
                 );
               })}
